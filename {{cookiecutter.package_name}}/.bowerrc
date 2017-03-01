@@ -1,0 +1,3 @@
+{
+  "directory": "{{cookiecutter.package_name}}/static/third-party/bower-components"
+}

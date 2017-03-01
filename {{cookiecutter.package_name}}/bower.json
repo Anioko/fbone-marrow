@@ -1,0 +1,20 @@
+{
+  "name": "{{cookiecutter.package_name}}",
+  "version": "{{cookiecutter.package_version}}",
+  "authors": [
+    "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "bootstrap": "~3.3.6",
+    "modernizr": "~3.3.1",
+    "normalize.css": "~4.0.0"
+  }
+}

@@ -1,0 +1,34 @@
+{% raw %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}{{ page_title|default('Project') }}{% endblock %} {% endraw %} - {{cookiecutter.package_name}}</title>
+
+    <meta name="description" content="{{cookiecutter.package_description}}">
+    <meta name="author" content="{{cookiecutter.author_name}}">
+    {% raw %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Shortcut Icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+    <script src="{{ url_for('static', filename='third-party/bower-components/modernizr/src/Modernizr.js') }}"></script>
+</head>
+<body>
+    {% include "macros/_ask_user_to_update_ie.html" %}
+
+    <div id='wrap'>
+        {% block container %}
+        <div class="container">
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% endblock %}
+    </div>
+
+</body>
+</html>
+{% endraw %}

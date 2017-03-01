@@ -1,0 +1,28 @@
+###################################
+# {{ cookiecutter.package_name }} Vagrantfile
+#  Using an editor? set it to 'ruby' syntax for highlighting
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  #VM base image config
+  config.vm.box = "ubuntu/trusty64"
+  config.ssh.forward_agent = true
+  config.vm.boot_timeout = 120
+  config.vm.synced_folder "./", "/opt/{{cookiecutter.package_name}}/git", create: true, group: "www-data", owner: "www-data"
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 2
+  end
+
+  config.vm.define "webserver" do |webserver|
+    #enable access to the webserver HTTP server
+    webserver.vm.network "forwarded_port", guest:80, host:8931
+    webserver.vm.network "forwarded_port", guest:443, host:8080
+    webserver.vm.network "forwarded_port", guest:5000, host:5000
+
+  end
+
+  config.vm.provision "shell", path: "ops/vagrant.sh"
+end
